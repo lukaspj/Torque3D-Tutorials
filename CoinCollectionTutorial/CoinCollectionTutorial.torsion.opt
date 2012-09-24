@@ -1,0 +1,24 @@
+<TorsionProjectOptions>
+<Address>127.0.0.1</Address>
+<Password>password</Password>
+<Port>6060</Port>
+<LastConfig>Release</LastConfig>
+<Breakpoints>
+<Breakpoint>
+<File>core\scripts\server\scriptExec.cs</File>
+<Line>1</Line>
+<Pass>0</Pass>
+<Condition/>
+<Enabled/>
+</Breakpoint>
+</Breakpoints>
+<Bookmarks/>
+<OpenFiles>
+<File ScrollX="0" ScrollY="0">scripts\server\scriptExec.cs</File>
+<File ScrollX="0" ScrollY="6">core\scripts\server\spawn.cs</File>
+<File ScrollX="0" ScrollY="0">scripts\client\scriptExec.cs</File>
+<File ScrollX="0" ScrollY="54">scripts\client\init.cs</File>
+<File ScrollX="0" ScrollY="512" Active="true">scripts\server\player.cs</File>
+<File ScrollX="0" ScrollY="12">art\shapes\actors\Soldier\soldier_rigged.cs</File>
+</OpenFiles>
+</TorsionProjectOptions>
