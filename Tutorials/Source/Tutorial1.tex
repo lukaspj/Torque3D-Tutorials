@@ -103,6 +103,11 @@ You can also go for the {\color{blue} \href{http://torqueide.sourceforge.net}{TI
 	{\it First} go into {\bf Scripts/Server/ScriptExec.cs}, at the end of the file add a new line {\it exec("Coin.cs");}\\
 	{\bf This is absolutely vital!} If you don't execute your scripts  with a exec(""); call. They wont be loaded, you have to execute the scripts to use them.\\
 	Now create a new file in {\bf Scripts/Server} called Coin.cs see next page for what to put into the file.
+	{\bf Notice! Here I am not following the conventions on where to place datablocks. Please read the {\color{blue}\hyperlink{QG-Folder}{Folder guider}}}.\\
+	The reason I do this is because 1. I wanted to keep it as simple as possible in the first tutorial, and 2. I like to go against the convention, in some cases
+	I prefer having the datablock with the scripts.\\
+	Of cause it is up to you how you do this, but for a start I recommend following the conventions. Which is what I will do for the rest of the tutorials aswell unless I have
+	a good reason not to.
 \end{frame}
 \subsection*{Creating your own object}
 \begin{frame}[fragile]
@@ -299,6 +304,23 @@ To define a function which can be called by a network command, it has to follow 
 	\item SPC (Concatenation with a space)
 	\item NL (Newline)
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\hypertarget{QG-Folder}{}
+\frametitle{Folders in T3D}
+	\structure{Art}\\
+	Contains all your art files (obviously), datablocks, GUI, fonts. Everything non-game logic related should be located here\\
+	\structure{Core}\\
+	Contains alot of core functionality and functions. You can look at this as a {\it "framework"} for your game logic.\\
+	\structure{Scripts}\\
+	Contains all of your script files in 3 specific folders. The client scripts in the client folder, the server scripts in the server folder, the GUI scripts in the GUI folder\\
+	\structure{Levels}\\
+	Contains your level files (your terrains go here when you create them)\\
+	\structure{Tools}\\
+	The world tools, this only contains the tools for editing the world and can be deleted upon release\\
+	\structure{Shaders}\\
+	Contains your shaders.
 \end{frame}
 
 \section{Troubleshooting}
