@@ -1,0 +1,14 @@
+###############
+#####LATEX#####
+###############
+*.log
+*.nav
+*.dvi
+*.out
+*.blg
+*.bbl
+*.aux
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
