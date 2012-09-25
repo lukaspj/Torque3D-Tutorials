@@ -2,6 +2,11 @@ Torque3D-Tutorials
 ==================
 
 A repository with tutorial projects and guides to help new user get started with T3D.
+The repo contains 3 folders.
+"Tutorials" - Contains the tutorials in both PDF and tex form. PDF for viewing and tex for editing.
+"TutorialBase" - Contains a binary with just the necessary files, set up for the tutorials specifically. This is a good base to start from.
+"CoinCollectionGame" - Contains the game made from the tutorials in it's finished form.
+(TutorialBase and CoinCollectionGame folders is still WIP therefore not committed yet)
 
 #Tutorial 1#
 In the first tutorial I guide you through setting up the environment to be *Torque Ready* and we will start creating our first simple game.
