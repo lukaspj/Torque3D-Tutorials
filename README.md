@@ -2,3 +2,29 @@ Torque3D-Tutorials
 ==================
 
 A repository with tutorial projects and guides to help new user get started with T3D.
+
+#Tutorial 1#
+In the first tutorial I guide you through setting up the environment to be *Torque Ready* and we will start creating our first simple game.
+This tutorial also contains lots of useful information about TorqueScript and will introduce you to the basics of TorqueScript
+This tutorial should be very useful for absolute beginners to Torque3D, if you have some experience you should still follow the scripts created in this tutorial as we will use them for the next tutorials.
+By the end of this tutorial you will have:
+* A basic single player coin collection game.
+  * Run into coins to get points.
+  * When there is no more coins left in the game, the game terminates with a "you win" screen.
+
+#Tutorial 2#
+Now this is where the sample game gets very nifty! We will look at how to make a Torque 3D game multiplayer compatible and our CoinCollection game will, after this tutorial, support multiplayer!
+We will also look at dynamic object instancing and how to define your own datablocks.
+By the end of this tutorial you will have:
+* A basic multiplayer coin collection game.
+  * Run into coins to get points.
+  * The guy with most coins will get a "you win" message.
+  * Everyone who did not have the most coins will get a "you lost" message.
+  * When picking up coins, a sparkly burst will appear.
+
+#Tutorial 3#
+TBD
+#Tutorial 4#
+TBD
+#Tutorial 5#
+TBD
