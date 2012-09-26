@@ -27,14 +27,18 @@
 }
 }
 \newcommand{\TS}{\lstset{ style=TS }}
+\newcommand{\TSS}{\lstset{ style=TSS }}
 
 \lstdefinelanguage{TorqueScript}{
+    showstringspaces=false
     sensitive=false,
-    keywords=[0]{function, datablock, delete, messageboxok, exec, echo, getcount, commandtoclient, commandtoserver, schedule, if, else, new, getObject},
-    keywords=[1]{StaticShapeData, ParticleEmitterData, ParticleEmitterNodeData, ParticleData, ParticleEmitterNode,ClientGroup},
+    keywords=[0]{function, datablock, delete, messageboxok, exec, echo, getcount, commandtoclient, commandtoserver, schedule, if, else, new, getObject, addObject,
+    				singleton, bind, getRowNumById, addRow, sortNumerical, clearSelection,setRowById,removeRowById,getWord,setWord,getWordCount,getField,setField,
+    				StripMLControlChars},
+    keywords=[1]{StaticShapeData, ParticleEmitterData, ParticleEmitterNodeData, ParticleData, ParticleEmitterNode,ClientGroup, SimGroup, SimObject,
+    				GuiControl, GuiBitmapBorderControl, GuiBitmapControl, GuiControlProfile, GuiTextListCtrl, GuiScrollCtrl, GuiTextCtrl, GuiPanel},
     keywords=[2]{SPC,@,TAB},
     keywords=[3]{\$CoinsFound},
-    keywords=[4]{obj,col,vec,len,score,emitterNode,idx,idxclient,winnerclient},
     keywords=[5]{this},
     morestring=[s][\color{Purple!100}]{"}{"},
     morestring=[s][\color{Purple!100}]{'}{'},
@@ -49,6 +53,17 @@
     keywordstyle=[1]{\color{DarkBlue}},
     keywordstyle=[2]{\color{LightGreen}},
     keywordstyle=[3]{\color{Orange!100}},
+    keywords=[4]{obj,obj1,obj2,col,vec,len,score,emitterNode,idx,idxclient,winnerclient,guiContent,val,score,kills,text,name,deaths,clientId,clientName,msgType,msgString},
+    keywordstyle=[4]{\color{CornflowerBlue!80}\%},
+    keywordstyle=[5]{\color{blue}\%},
+}
+\lstdefinestyle{TSS}{
+    language=TorqueScript,
+    keywordstyle=[0]{\color{Blue}},
+    keywordstyle=[1]{\color{DarkBlue}},
+    keywordstyle=[2]{\color{LightGreen}},
+    keywordstyle=[3]{\color{Orange!100}},
+    keywords=[4]{obj,obj1,obj2,col,vec,len,score,emitterNode,idx,idxclient,winnerclient,guiContent,val,text,name,clientId,clientName,msgType,msgString},
     keywordstyle=[4]{\color{CornflowerBlue!80}\%},
     keywordstyle=[5]{\color{blue}\%},
 }

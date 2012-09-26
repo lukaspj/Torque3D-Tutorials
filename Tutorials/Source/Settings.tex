@@ -4,9 +4,17 @@
 %\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{graphics}
 \usepackage{hyperref}
+\usepackage{enumitem}
 \usepackage{ragged2e}
 \justifying
 \input{CodeHighlighting.tex}
 
 \author{Lukas Peter Joergensen}
 \date{\today}
+
+\newlist{longenum}{enumerate}{5}
+\setlist[longenum,1]{label=$\circ$}
+\setlist[longenum,2]{label=$\circ$}
+\setlist[longenum,3]{label=$\circ$}
+\setlist[longenum,4]{label=$\circ$}
+\setlist[longenum,5]{label=$\circ$}

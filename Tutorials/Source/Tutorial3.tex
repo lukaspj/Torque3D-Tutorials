@@ -1,0 +1,518 @@
+\input{Settings.tex}
+\title{Beginners guide to T3D part three}
+\begin{document}
+%First page
+\begin{frame}
+\titlepage
+{\it Revision 1}
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+\frametitle{Introduction}
+	This is part 3 of a beginners introduction to T3D tutorial series I am writing.\\
+	In this tutorial we will create some GUI, more specifically we will create our own scoreboard.\\
+	We will handle several topics in this part of the series. If statements in TorqueScript, msgCallBacks, dynamic interface and more.
+\end{frame}
+%Author
+\begin{frame}[fragile]
+\frametitle{The Author}
+	\structure{Who am i?}\\
+	My name is Lukas Joergensen, I am 19 years old and live in Denmark, currently studying Computer Science at Aarhus University.\\
+	\structure{What is your experience with T3D?}\\
+	Currently, my most actual project is the IPS Lite and Pro for T3D. You can read about the IPS Lite on the {\color{blue}\href{https://github.com/lukaspj/IPS-Lite-for-T3D}{GitHub page}}\\
+	Or visit my personal website at {\color{blue}\href{http://fuzzyvoidstudio.com/}{FuzzyVoidStudio.com}}
+\end{frame}
+%Agenda
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[]
+\end{frame}
+
+\section{Objects and child objects}
+
+\begin{frame}[fragile]
+\frametitle{Objects and child objects}
+Remember the thing I called {\it the constructor} when instancing new objects?\\
+This constructor has an interesting feature. If you were to instance and object like a SimGroup, which contains more objects you could do this:\\
+\TS
+\begin{lstlisting}
+obj = new SimGroup(){};
+obj.addObject(new SimObject(){});
+obj.addObject(new SimObject(){});
+etc..
+\end{lstlisting}
+But the constructor allows us to instantiate the child objects inside the constructor:\\
+\begin{lstlisting}
+obj = new SimGroup(theGroup){
+   new SimObject(){};
+   new SimObject(){};
+};
+\end{lstlisting}
+We will use this feature when writing new .gui files:\\
+\begin{lstlisting}
+guiContent = new GuiControl(ScoreBoardGui){
+   new GuiBitmapBorderControl(){
+      new GuiBitmapControl(){
+      };
+   };
+};
+\end{lstlisting}
+This code will create a new control with a bitmap border inside, and a bitmap inside the border. Get the idea? This is how we parent the Gui elements.
+\end{frame}
+
+\section{Setting up}
+\begin{frame}[fragile]
+\frametitle{Setting up}
+I prefer writing my GUI in script, because it gives a better and cleaner output, and the editor feels a bit clumsy to me.\\
+\structure{Setting up the files}\\
+First add a new file in {\bf art/gui} called {\it scoreBoard.gui}.\\
+Then add a new file in {\bf scripts/gui} called {\it scoreboardGui.cs}\\
+In {\bf scripts/client/scriptExec.cs} add these two lines:
+\TS
+\begin{lstlisting}
+exec("./../gui/scoreboardGui.cs");
+exec("art/gui/scoreBoard.gui");
+\end{lstlisting}
+The server shouldn't handle GUI scripts. The GUI is for the clients which is why we exec them in the client's scriptExec.cs file.\\
+{\bf Can't find scriptExec.cs?} then you should go through part 1 again!
+\end{frame}
+
+\section{The scoreboard}
+\subsection{The structure}
+\begin{frame}[fragile]
+\frametitle{The scoreBoard.gui}
+scoreBoard.gui is where we will specify the structure of the scoreboard.\\
+{\bf First we will create the base container}\\
+{\it Write this inside of scoreBoard.gui}
+\TS
+\begin{lstlisting}
+//--- OBJECT WRITE BEGIN ---
+guiContent = new GuiControl(ScoreBoardGUI) {
+   position = "0 0";
+   extent = "1024 768";
+   profile = "GuiModelessDialogProfile";
+   tooltipProfile = "GuiToolTipProfile";
+   isContainer = "1";
+   canSaveDynamicFields = "1";
+      enabled = "1";
+      noCursor = "1";
+};
+//--- OBJECT WRITE END ---
+\end{lstlisting}
+This is a simple control that basically fills the whole screen (starts at top left corner, scales down to the top right corner and it is anchored to the right and bottom sides)\\
+Now we need some content inside of it!
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{A centered container}
+Now we will need to center the content inside the ScoreBoardGUI so it is centered on the screen.\\
+Add this to the GuiControl ScoreBoardGUI (Remember how we did it? Read frame 5)\\
+\TS
+\begin{lstlisting}
+ new GuiPanel() {
+      docking = "None";
+      position = "370 271";
+      extent = "283 226";
+      horizSizing = "center";
+      vertSizing = "height";
+      profile = "ScoreBoardProfile";
+      tooltipProfile = "GuiToolTipProfile";
+   };
+\end{lstlisting}
+This creates a new panel in the center of the screen. Extent means the size of the panel. This panel is 283px wide and 226px tall.\\
+We make sure it is centered by letting position be (screenwidth/2)-(extent/2). In this case it is (1024/2)-(283/2). (Likewise for height)\\
+We set vertSizing to height, which means that it will follow the height of the screen and thus scale vertically.\\
+We set horizSizing to center, so that it wont scale horizontally. This is because a horizontal scaling would corrupt the design of the scoreboard.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Headers for the scores}
+We will be using a GuiTextListCtrl to list the players. We can consider it like a table. Since every new Text in the list is a row, and we can specify columns by tabs.\\
+Therefore we need some headers for the values "Coins, Kills, Deaths" (yes we will add in some 'kill each other' feature in a later tutorial)\\
+{\bf So put this inside the GUIPanel you just created:}
+\TS
+\begin{lstlisting}
+new GuiTextCtrl() {
+   text = "Coins";
+   maxLength = "255";
+   position = "104 2";
+   extent = "33 18";
+   profile = "HudTextBoldProfile";
+   tooltipProfile = "GuiToolTipProfile";
+};
+new GuiTextCtrl() {
+   text = "Kills";
+   maxLength = "255";
+   position = "158 2";
+   extent = "30 18";
+   profile = "HudTextBoldProfile";
+   tooltipProfile = "GuiToolTipProfile";
+};
+\end{lstlisting}
+... Continued
+\end{frame}
+
+\begin{frame}[fragile]
+\TS
+\begin{lstlisting}
+new GuiTextCtrl() {
+   text = "Deaths";
+   maxLength = "255";
+   position = "206 2";
+   extent = "37 18";
+   profile = "HudTextBoldProfile";
+   tooltipProfile = "GuiToolTipProfile";
+};
+\end{lstlisting}
+As you can see the position value is not very high on these elements, thats because their parent is the GuiPanel so their position is relative to the panel!.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The scrollbars}
+If alot of players is joining, we will need some scrollbars. For this we need a GuiScrollCtrl placed inside of the GuiPanel\\
+\TS
+\begin{lstlisting}
+new GuiScrollCtrl() {
+   willFirstRespond = "1";
+   hScrollBar = "alwaysOff";
+   vScrollBar = "dynamic";
+   lockHorizScroll = "1";
+   lockVertScroll = "0";
+   constantThumbHeight = "0";
+   childMargin = "0 0";
+   mouseWheelScrollSpeed = "-1";
+   position = "0 24";
+   extent = "228 202";
+   horizSizing = "width";
+   vertSizing = "height";
+   profile = "ChatHudScrollProfile";
+   tooltipProfile = "GuiToolTipProfile";
+   isContainer = "1";
+}
+\end{lstlisting}
+As you might be able to see, we don't want a horizontal scrollbar so it is always off (hScrollBar = "alwaysOff") and the vertical scrollbar only shows if it is necessary
+(vScrollBar = "dynamic") beside from that, all these settings should be fairly straight forward.
+\end{frame}
+
+\begin{frame}[fragile]
+Now last but not least we need the aforementioned GuiTextListCtrl placed inside the GuiScrollCtrl.\\
+\TS
+\begin{lstlisting}
+new GuiTextListCtrl(ScoreBoardGUIList) {
+   columns = "0 98 153 200";
+   fitParentWidth = "1";
+   clipColumnText = "0";
+   position = "0 0";
+   extent = "228 8";
+   horizSizing = "width";
+   vertSizing = "height";
+   profile = "HudTextNormalProfile";
+   tooltipProfile = "GuiToolTipProfile";
+   isContainer = "1";
+};
+\end{lstlisting}
+The important things to note here is the {\bf columns} attribute, the {\bf fitParentWidth} attribute and
+the {\bf clipColumnText} attribute.\\
+{\bf columns} this specifies where the columns will be (on the x-axis relative to the GuiTextListCtrl).
+As you might have noticed this matches the positions of the GuiText controls!\\
+{\bf fitParentWidth} this makes the TextListCtrl fill the Scroll horizontally.\\
+{\bf clipColumnText} this makes sure that the columns don't break or overwrite each other. If the string in this column is longer than the column it will be cut out.
+\end{frame}
+
+\begin{frame}
+\frametitle{The final structure}
+When you are done your structure for the GUI should look something like this:
+\begin{longenum}
+	\item {\bf GuiControl} {\it "ScoreboardGUI"}
+	\begin{longenum}
+		\item {\bf GuiPanel}
+		\begin{longenum}
+			\item {\bf GuiTextCtrl} {\it "Coins"}
+			\item {\bf GuiTextCtrl} {\it "Kills"}
+			\item {\bf GuiTextCtrl} {\it "Deaths"}
+			\item {\bf GuiScrollCtrl}
+			\begin{longenum}
+			\item {\bf GuiTextListCtrl} {\it "ScoreBoardGUIList"}
+			\end{longenum}
+		\end{longenum}
+	\end{longenum}
+\end{longenum}
+\end{frame}
+
+\subsection{The style}
+\begin{frame}[fragile]
+\frametitle{Styling the GUI}
+There is one thing that you may have noticed and that I haven't explained!\\
+The profiles! The profile is to GUI objects what CSS is to HTML. They define the style of the GUI's\\
+I wont spend a lot of time with the profiles even tho they are quite important. Therefore we will use alot of the stock profiles and only create a single custom one.\\
+In {\bf art/gui/customProfiles.cs} (or create your own profile file) add the following snippet:
+\TS
+\begin{lstlisting}
+singleton GuiControlProfile (ScoreBoardProfile)
+{
+   opaque = "1";
+   fillColor = "0 0 0 200";
+   fillColorHL = "0 0 0 200";
+   borderColor = "0 0 0 255";
+   borderThickness = "5";
+   border = "1";
+};
+\end{lstlisting}
+This should be pretty easy to understand. All controls using this profile has a black background which is transparent and the border is 5 px wide, black and not transparent.\\
+There is alot more settings that can be played with, for setting text color bevel etc etc.. This is not within the scope of this tutorial unfortunately!
+\end{frame}
+
+\subsection{The functionality}
+\begin{frame}[fragile]
+\frametitle{The functionality}
+Now we need to add some functionality to the scoreboard!\\
+{\bf First} we should be able to see it shouldn't we?\\
+At the bottom of {\bf scripts/gui/scoreboardGUI.cs} add the following code:
+\TS
+\begin{lstlisting}
+//-----------------------------------------------------------------------------
+// ScoreBoardGUI utility methods
+//-----------------------------------------------------------------------------
+function ScoreBoardGUI::toggle(this)
+{
+   if (this.isAwake())
+      Canvas.popDialog(this);
+   else
+      Canvas.pushDialog(this);
+}
+
+function ScoreBoardGUI::clear(%this)
+{
+   // Override to clear the list.
+   ScoreBoardGUIList.clear();
+}
+\end{lstlisting}
+This toggles the ScoreBoardGUI so a call to ScoreBoardGUI.toggle() will make it pop up on the screen. If we then call toggle() again it will hide itself.\\
+Now, this is just a function we need a way to call it. And calling it through the console is quite.. Clumsy.. So lets add a keybinding!\\
+\end{frame}
+
+\subsubsection{Keybindings}
+\begin{frame}[fragile]
+\frametitle{Keybindings}
+{\bf Keybindings} should always go in the {\bf scripts/client/default.bind.cs} file.
+\TS
+\begin{lstlisting}
+function showScoreBoard(val)
+{
+   if (val)
+      ScoreBoardGUI.toggle();
+}
+
+moveMap.bind( keyboard, F, showScoreBoard );
+\end{lstlisting}
+ActionMaps is kindda like, a set of keybindings. You can pop and push action maps and as such change how our input affects the game.  {\color{blue} \href{http://docs.garagegames.com/tge/official/content/documentation/Engine/Reference/InputModel.html}{Read old docs about Torques input model}}\\
+So what happens here is that we bind the key F to the function showScoreBoard on the action map {\it moveMap}. moveMap is the actionmap that is on
+by default when you enter the game.\\
+If you open up the game you might experience that pressing F doesn't work.. This is because T3D generates a {\bf scripts/client/config.cs} that is used to save the users custom
+keybindings. Simply delete config.cs to revert all keybindings to default and to invoke your new keybinding, or add the binding there aswell.
+\end{frame}
+\subsubsection*{General functionality}
+\begin{frame}[fragile]
+\frametitle{Add and remove a player}
+We want to be able to add and remove players. So we need a function for this in {\bf scripts/gui/scoreboardGUI.cs}. Add this before the Utility header:
+\TS
+\begin{lstlisting}
+//-----------------------------------------------------------------------------
+// ScoreBoardGUI data handler methods
+//-----------------------------------------------------------------------------
+
+function ScoreBoardGUI::addPlayer(this, clientID, name, score, 
+                                                   kills, deaths)
+{
+   text = StripMLControlChars(name) TAB score TAB kills 
+                                                   TAB deaths;
+
+   // Update or add the player to the control
+   if (ScoreBoardGUIList.getRowNumById(clientId) == -1)
+      ScoreBoardGUIList.addRow(clientId, text);
+   else
+      ScoreBoardGUIList.setRowById(clientId, text);
+
+   // Sorts by score
+   ScoreBoardGUIList.sortNumerical(1, false);
+   ScoreBoardGUIList.clearSelection();
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Add and remove a player (continued)}
+So lets see what this does. We create a new variable '\%text' which stores name, score, kills and deaths with columns seperated by tabs.\\
+Then we check if there is already stored a row with that id. If not, then we add a new row else we update the row with that id.\\
+Finally we sort the list by column 1 (the second column because it starts at 0).\\
+{\bf Now we need functionality to remove a player again!} Add the following below addPlayer:
+\TS
+\begin{lstlisting}
+function ScoreBoardGUI::removePlayer(this, clientId)
+{
+   PlayerListGuiList.removeRowById(clientId);
+}
+\end{lstlisting}
+Very simple, remove the row with the given id.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Updating a players status}
+{\bf Add this below removePlayer}
+\TS
+\begin{lstlisting}
+function ScoreBoardGUI::updatePlayer(this, clientId, score, 
+                                                kills, deaths)
+{
+   text = ScoreBoardGUIList.getRowTextById(clientId);
+   if(score !$= "null")
+      text = setField(text, 1, score);
+   text = setField(text, 2, kills);
+   text = setField(text, 3, deaths);
+   ScoreBoardGUIList.setRowById(clientId, text);
+   ScoreBoardGUIList.sortNumerical(1, false);
+   ScoreBoardGUIList.clearSelection();
+}
+\end{lstlisting}
+I made 2 quick guides about the {\color{blue} \hyperlink{QG-FieldsAndWords}{setField}} method and the {\color{blue} \hyperlink{QG-IfStatements}{if statement}}. So i wont explain them here!
+Rest of it is pretty simple, so I wont spend time a lot of time explaining these things. Of course setRow sets the row with the new data etc.\\
+However why is only \%score checked for being null? Because, later we will want to call this function without setting the score, and then we pass null as a string.
+It has nothing to do with validating the data or checking if it is an empty string! 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Resetting scores}
+{\bf Put this below UpdatePlayer}
+\TS
+\begin{lstlisting}
+function ScoreBoardGUI::resetScores(this)
+{
+   for (idx = 0; idx < ScoreBoardGUIList.rowCount(); idx++)
+   {
+      text = ScoreBoardGUIList.getRowText(%i);
+      text = setField(text, 1, "0");
+      text = setField(text, 2, "0");
+      text = setField(text, 3, "0");
+      ScoreBoardGUIList.setRowById(ScoreBoardGUIList.getRowId(idx), text);
+   }
+   ScoreBoardGUIList.clearSelection();
+}
+\end{lstlisting}
+This iterates through all the rows in ScoreBoardGUIList and sets score, kills and deaths to 0. This is very similar to the UpdatePlayer function.
+\end{frame}
+
+\subsection{Callbacks}
+\begin{frame}[fragile]
+\frametitle{Make the scoreboard update}
+So what we have been doing so far, is to add alot of functionality. However if we don't put it to use what is it worth?\\
+So we will add something called messagecallbacks. Which is very similar to a commandToClient function but has more functionality,
+and can call multiple functions, not just a single one.\\
+{\bf First lets add the callbacks put this in top of scoreboardGUI.cs}
+\TS
+\begin{lstlisting}
+//-----------------------------------------------------------------------------
+// Callbacks
+//-----------------------------------------------------------------------------
+addMessageCallback('MsgClientJoin', SBGUIPlayerJoined);
+addMessageCallback('MsgClientDrop', SBGUIPlayerLeft);
+addMessageCallback('MsgClientScoreChanged', SBGUIScoreChanged);
+addMessageCallback('MsgCoinPickedUp', SBGUICoinPickup);
+\end{lstlisting}
+{\it 'MsgClientJoin', 'MsgClientDrop' and 'MsgClientScoreChanged'} is some messages that is already implemented. The last one {\it 'MsgCoinPickedUp'} is one that we will specify later
+so you can see how they work!.
+\end{frame}
+
+\begin{frame}[fragile]
+{\bf Add these right below the 'addMessageCallback' calls}
+\TS
+\begin{lstlisting}
+function SBGUIPlayerJoined(msgType, msgString, clientName, 
+                      clientId, guid, score, kills, 
+                      deaths, isAI, isAdmin, isSuperAdmin)
+{
+   ScoreBoardGUI.addPlayer(clientId, clientName, 0, kills, 
+                                                          deaths);
+}
+
+function SBGUIPlayerLeft(msgType, msgString, clientName,
+                                                          clientId)
+{
+   ScoreBoardGUI.removePlayer(clientId);
+}
+
+function SBGUIScoreChanged(msgType, msgString, score, 
+                                          kills, deaths, clientId)
+{
+   ScoreBoardGUI.updatePlayer(clientId, "null", kills, deaths);
+}
+
+function SBGUICoinPickup(msgType, msgString, clientName, 
+                                  clientId, score, kills, deaths)
+{
+   ScoreBoardGUI.updatePlayer(clientId, score, kills, deaths);
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Custom callback}
+If you open up the game now and press 'F' you should see that a player has been added with 0 coins, kills and deaths. Great! But if you pick a coin up nothing happens.\\
+This is because we need to add our own message. So go into {\bf scripts/server/Coin.cs} and add the following in {\bf Coin::onCollision after \%col.client.coinsfound++;}:
+\TSS
+\begin{lstlisting}
+messageAll('MsgCoinPickedUp', -1, col.client.playername, 
+       col.client, col.client.coinsfound, 
+       col.client.kills, col.client.deaths);
+\end{lstlisting}
+This sends a message to all clients, telling them that the client has picked up a new coin. This gets picked up by our callback in the previous slides and makes the scoreboard add
+one to the "Coin" score of the client.
+\end{frame}
+
+\begin{frame}
+\frametitle{Finishing touch}
+We want to make a couple of calls from different places in the scripts so that the table is empty when a new game is started\\
+In {\bf Scripts/client/game.cs} in {\bf clientCmdGameStart} Add {\it ScoreBoardGUI.resetScores();}
+In {\bf Scripts/client/serverConnection.cs} {\bf disconnectedCleanup} add {\it ScoreBoardGUI.clear();}
+And thats it! Enjoy your new scoreboard!
+\end{frame}
+
+\section{Quick guides}
+\begin{frame}[fragile]
+\hypertarget{QG-IfStatements}{}
+\frametitle{If statements in TorqueScript}
+{\bf Remember that i said everything in TorqueScript is strings?}\\
+Well this is important to remember with if statements! Because in if statements you either compare by int or by string.\\
+To compare by string you should write \$= instead of ==\\
+Example:
+\TS
+\begin{lstlisting}
+if("asd" == "asd") // This is true
+if("asd" == "def") // This is true aswell
+if("asd" $= "asd") // This is true
+if("asd" $= "def") // This is false
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\hypertarget{QG-FieldsAndWords}{}
+\frametitle{Fields and words}
+There is some pretty cool functions called getWord, setWord, getField, setField.\\
+These functions lets you edit a string at an index based on the number of either spaces or tabs.\\
+getField, is based on tabs. getWord is based on spaces.\\
+Examples:
+\TS
+\begin{lstlisting}
+val = "1 2 3 4";
+echo(getWord(val, 2)); //Echoes 3
+echo(getWordCount(val)); //Echoes 4
+echo(setWord(val, 2, "10")); //Echoes "1 10 3 4"
+echo(val); //Still echoes "1 2 3 4"
+val = setWord(val,2,"10");
+echo(val); //Echoes "1 10 3 4"
+val = 1 TAB 2 TAB 3 TAB 4;
+echo(getField(val, 2)); //Echoes 3
+\end{lstlisting}
+\end{frame}
+
+\end{document}
