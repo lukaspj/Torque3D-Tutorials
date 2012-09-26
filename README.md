@@ -37,8 +37,19 @@ By the end of this tutorial you will have:
   * When picking up coins, a sparkly burst will appear.
 
 #Tutorial 3#
-TBD
+In this tutorial we will look at creating our own scoreboard for the coin collection game.
+
+Now we can keep track of whos in charge in the game! And get a basic understanding of how the GUI work in T3D.
+
+By the end of this tutorial you will have:
+* A basic multiplayer coin collection game.
+  * Run into coins to get points.
+  * The guy with most coins will get a "you win" message.
+  * Everyone who did not have the most coins will get a "you lost" message.
+  * When picking up coins, a sparkly burst will appear.
+  * Press 'F' to get a nifty scoreboard which will keep track of the score at all players.
 #Tutorial 4#
-TBD
+This tutorial will introduce some basic combat based on my Basic Spell Casting resource. This will show how to use Torque3D
+for other things than FPS games.
 #Tutorial 5#
 TBD
