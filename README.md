@@ -48,8 +48,10 @@ By the end of this tutorial you will have:
   * Everyone who did not have the most coins will get a "you lost" message.
   * When picking up coins, a sparkly burst will appear.
   * Press 'F' to get a nifty scoreboard which will keep track of the score at all players.
+
 #Tutorial 4#
 This tutorial will introduce some basic combat based on my Basic Spell Casting resource. This will show how to use Torque3D
 for other things than FPS games.
+
 #Tutorial 5#
 TBD
