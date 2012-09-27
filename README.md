@@ -12,6 +12,8 @@ The repo contains 3 folders.
 
 (TutorialBase and CoinCollectionGame folders is still WIP therefore not committed yet)
 
+**Ignore the CoinCollectionTutorial folder for now**
+
 #Tutorial 1#
 In the first tutorial I guide you through setting up the environment to be *Torque Ready* and we will start creating our first simple game.
 
