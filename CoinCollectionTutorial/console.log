@@ -1,0 +1,184 @@
+//-------------------------- 9/25/2012 -- 01:12:45 -----
+Processor Init:
+   Intel Pentium III Xeon, ~3.31 Ghz
+   FPU detected
+   MMX detected
+   SSE detected
+   SSE2 detected
+   MP detected [4 cores, 4 logical, 1 physical]
+ 
+Math Init:
+   Installing Standard C extensions
+   Installing Assembly extensions
+   Installing FPU extensions
+   Installing MMX extensions
+   Installing SSE extensions
+ 
+Initializing platform...
+Input Init:
+   keyboard0 input device created.
+   mouse0 input device created.
+   DirectInput enabled.
+
+Done
+SFXFMODProvider - Could not locate 'fmodex.dll' or 'fmodexp.dll' - FMOD  not available.
+GFX Init:
+   Direct 3D (version 9.x) device found
+   Direct 3D (version 9.x) device found
+   Null device found
+
+DebugDrawer Enabled!
+Binding server port to default IP
+Debugger connection from 127.0.0.1
+--------- Loading DIRS ---------
+
+--------- Parsing Arguments ---------
+Binding server port to default IP
+UDP initialized on port 0
+Attempting to create GFX device: NVIDIA GeForce GTX 550 Ti (D3D9)
+Device created, setting adapter and enumerating modes
+   Cur. D3DDevice ref count=1
+   Pix version detected: 3.000000
+   Vert version detected: 3.000000
+   Maximum number of simultaneous samplers: 16
+   Number of simultaneous render targets: 4
+   Hardware occlusion query detected: Yes
+   Using Direct3D9Ex: No
+WMIVideoInfo: DxDiag initialized
+Initializing GFXCardProfiler (D3D9)
+   o Chipset : 'GeForce GTX 550 Ti'
+   o Card    : 'GeForce GTX 550 Ti'
+   o Version : '8.17.0013.0142'
+   - Scanning card capabilities...
+GFXCardProfiler (D3D9) - Setting capability 'autoMipMapLevel' to 1.
+GFXCardProfiler (D3D9) - Setting capability 'maxTextureWidth' to 8192.
+GFXCardProfiler (D3D9) - Setting capability 'maxTextureHeight' to 8192.
+GFXCardProfiler (D3D9) - Setting capability 'maxTextureSize' to 8192.
+GFXCardProfiler (D3D9) - Setting capability 'lerpDetailBlend' to 1.
+GFXCardProfiler (D3D9) - Setting capability 'fourStageDetailBlend' to 1.
+   - Loading card profiles...
+      - Loaded card profile core/profile/D3D9.cs
+      - No card profile core/profile/D3D9.GeForceGTX550Ti.cs exists
+      - No card profile core/profile/D3D9.GeForceGTX550Ti.GeForceGTX550Ti.cs exists
+      - No card profile core/profile/D3D9.GeForceGTX550Ti.GeForceGTX550Ti.81700130142.cs exists
+% - PostFX Manager - Executing core/scripts/client/postFx/default.postfxpreset.cs
+% - PostFX Manager - Applying from preset
+% - PostFX Manager - PostFX enabled
+Missing file: core/art/gui/customProfiles.cs!
+ % - Initialized Core
+
+--------- Initializing Directory: scripts ---------
+sfxStartup...
+SFXSystem::createDevice - created OpenAL device 'Generic Software'
+   Provider: OpenAL
+   Device: Generic Software
+   Hardware: No
+   Buffers: 16
+
+--------- Initializing CoinCollectionTutorial: Server Scripts ---------
+
+--------- Initializing CoinCollectionTutorial: Client Scripts ---------
+
+--------- Initializing Lighting Systems ---------
+Using Advanced Lighting
+
+
+--------------
+Attempting to set resolution to "1024 768 false 32 60 4"
+Accepted Mode: 
+--Resolution : 1024 768
+--Full Screen : No
+--Bits Per Pixel : 32
+--Refresh Rate : 60
+--FSAA Level : 4
+--------------
+GFXPCD3D9Device::reset - depthstencil 48dcf80 has 2 ref's
+--- Resetting D3D Device ---
+GFXPCD3D9Device::reset - depthstencil 2206e00 has 2 ref's
+--- Resetting D3D Device ---
+scripExecClient
+Binding server port to default IP
+UDP initialized on port 0
+ % - Initializing Tools
+ % - Initializing Tools Base
+ % - Initializing Base Editor
+ % - Initializing World Editor
+ % - Initializing Sketch Tool
+ - Initializing Datablock Editor
+ % - Initializing Debugger
+ % - Initializing Decal Editor
+ % - Initializing Forest Editor
+ % - Initializing Gui Editor
+ % - Initializing Material Editor
+ % - Initializing Mesh Road Editor
+ % - Initializing Mission Area Editor
+ % - Initializing Particle Editor
+ % - Initializing Physics Tools
+No physics plugin exists.
+ % - Initializing River Editor
+ - Initializing Road and Path Editor
+ % - Initializing Shape Editor
+Engine initialized...
+AntiAliasing has been disabled; it is not compatible with AdvancedLighting.
+Window focus status changed: focus: 1
+Exporting server prefs...
+*** LOADING MISSION: levels/Empty Room.mis
+*** Stage 1 load
+*** Stage 2 load
+[MaterialList::mapMaterials] Unable to find material for texture: tutIslandDiffuse
+[MaterialList::mapMaterials] Unable to find material for texture: tutIslandDiffuse
+[MaterialList::mapMaterials] Unable to find material for texture: tutIslandDiffuse
+[MaterialList::mapMaterials] Unable to find material for texture: tutIslandDiffuse
+*** Mission loaded
+Connect request from: 
+Connection established 4057
+CADD: 4058 local
+*** Sending mission load to client: levels/Empty Room.mis
+Mapping string: ServerMessage to index: 0
+Mapping string: MsgConnectionError to index: 1
+onServerMessage: 
+Mapping string: MsgLoadInfo to index: 2
+onServerMessage: 
+Mapping string: MsgLoadDescripition to index: 3
+onServerMessage: 
+Window focus status changed: focus: 0
+  Using background sleep time: 200
+Mapping string: MsgLoadInfoDone to index: 4
+onServerMessage: 
+Mapping string: MsgClientJoin to index: 5
+Mapping string: Welcome to a Torque application %1. to index: 6
+Mapping string: Visitor to index: 7
+onServerMessage: 
+  +- a: Welcome to a Torque application Visitor.
+Mapping string: MissionStartPhase1 to index: 8
+*** New Mission: levels/Empty Room.mis
+*** Phase 1: Download Datablocks & Targets
+% - PostFX Manager - Executing core/scripts/client/postFx/default.postfxpreset.cs
+% - PostFX Manager - Applying from preset
+% - PostFX Manager - PostFX enabled
+Mapping string: MissionStartPhase1Ack to index: 0
+Mapping string: MissionStartPhase2 to index: 9
+*** Phase 2: Download Ghost Objects
+Mapping string: MissionStartPhase2Ack to index: 1
+Ghost Always objects received.
+Mapping string: MissionStartPhase3 to index: 10
+Client Replication Startup has Happened!
+fxFoliageReplicator - replicated client foliage for 0 objects
+Failed to create resource: [levels/Empty Room.mis.decals]
+*** Phase 3: Mission Lighting
+Mission lighting done
+Mapping string: MissionStartPhase3Ack to index: 2
+Mapping string: MissionStart to index: 11
+*** Initial Control Object
+Activating DirectInput...
+*** Control Object Changed
+Mapping string: setNumericalHealthHUD to index: 12
+clientCmdsetNumericalHealthHUD: Unknown command.
+Window focus status changed: focus: 1
+*** ENDING MISSION
+CDROP: 4058 
+Exporting server prefs...
+Exporting server prefs...
+Exporting client prefs
+Exporting server prefs
+Cur. D3DDevice ref count=1
