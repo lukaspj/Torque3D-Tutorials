@@ -324,7 +324,7 @@ img {
 <li>Add the changes</li>
 <li>Commit the changes</li>
 <li>Push the changes to my own repo on GitHub</li>
-<li>PullRequest the changes to the official repo </li>
+<li>Pull Request the changes to the official repo </li>
 </ol>
 <p>So lets go through this procedure step-by-step.</p>
 <h2 id="branches">Branches</h2>
@@ -358,20 +358,20 @@ git add foo.txt // Adds foo.txt</code></pre>
 <blockquote>
 <p>git branch NewFeature<br>git checkout NewFeature<br>git push --set-upstream origin NewFeature<br>// Make the changes<br>git add *<br>git commit -m &quot;Wow new feature that does this&quot;<br>git push</p>
 </blockquote>
-<h2 id="pullrequests">Pullrequests</h2>
-<p>Assuming you have successfully pushed the commit to the online repository, you should now be able to do a pullrequest. Pullrequests are done through the website, and are very simple to perform.<br>Go to your online repository and press the green <code>Compare and review</code> button.</p>
-<p><img src="http://i.imgur.com/QPUFaqD.jpg" alt="Pullrequest"></p>
-<p>Now you come to the <em>compare page</em>, on this page you can compare your repository with the official one and create pullrequests from a branch in your repository to a branch in the official one.</p>
+<h2 id="pull-requests">Pull requests</h2>
+<p>Assuming you have successfully pushed the commit to the online repository, you should now be able to do a pull request. Pull requests are done through the website, and are very simple to perform.<br>Go to your online repository and press the green <code>Compare and review</code> button.</p>
+<p><img src="http://i.imgur.com/QPUFaqD.jpg" alt="Pull request"></p>
+<p>Now you come to the <em>compare page</em>, on this page you can compare your repository with the official one and create pull requests from a branch in your repository to a branch in the official one.</p>
 <p>You can edit what branches and repositories you want to compare by clicking the <em>&quot;Edit&quot;</em> button</p>
 <p><img src="http://i.imgur.com/XmLLXFh.jpg" alt="compare"></p>
 <p>And you can see what changes has been made below that bar:</p>
 <p><img src="http://i.imgur.com/u5ltS2Q.jpg" alt=""></p>
-<p>Now to actually make the PullRequest, click on the large button that says <em>&quot;Click to create a pull request for this comparison&quot;</em></p>
+<p>Now to actually make the Pull Request, click on the large button that says <em>&quot;Click to create a pull request for this comparison&quot;</em></p>
 <p><img src="http://i.imgur.com/0HvgsUr.jpg" alt=""></p>
-<p>The dialog that then pops up will feature a title and a description. Here you should describe all the commits that your pull request involves! (If you only have 1 commit, copy-pasting the information from that commit will be fine) along with a &quot;how to use&quot; (or &quot;how to replicate the bug this PullRequest fixes&quot;). Then you just press <em>&quot;Send pull request&quot;</em> and that&#39;s it! Now you just have to wait untill the PullRequest is accepted/rejected and act accordingly. Be sure to be ready to help out if there is some issues with the PullRequest.<br><strong>Make sure to checkout the guidelines below.</strong></p>
+<p>The dialog that then pops up will feature a title and a description. Here you should describe all the commits that your pull request involves! (If you only have 1 commit, copy-pasting the information from that commit will be fine) along with a &quot;how to use&quot; (or &quot;how to replicate the bug this Pull Request fixes&quot;). Then you just press <em>&quot;Send pull request&quot;</em> and that&#39;s it! Now you just have to wait untill the Pull Request is accepted/rejected and act accordingly. Be sure to be ready to help out if there is some issues with the Pull Request.<br><strong>Make sure to checkout the guidelines below.</strong></p>
 <h2 id="important-guidelines-for-contributing">Important guidelines for contributing</h2>
-<p><strong> Always pullrequest to the development branch </strong><br>New changes should always go into the development branch before they go into the master branch, this is because they need to be QA&#39;d before going into the Master branch. If you don&#39;t pullrequest to the development branch, your pullrequest will be rejected.</p>
-<p><strong> Avoid redundancy </strong><br>If you have a branch this fixes feature &quot;x&quot; make sure that, that is all it does. Don&#39;t do a pullrequest that does anything else than what it says on the label. If there is a bunch of redundant changes in the branch, it will make it hard to track those changes later on since it&#39;s hidden under another pull request. So most likely your pullrequest will be rejected if this is the case.</p>
+<p><strong> Always pull request to the development branch </strong><br>New changes should always go into the development branch before they go into the master branch, this is because they need to be QA&#39;d before going into the Master branch. If you don&#39;t pull request to the development branch, your pull request will be rejected.</p>
+<p><strong> Avoid redundancy </strong><br>If you have a branch this fixes feature &quot;x&quot; make sure that, that is all it does. Don&#39;t do a pull request that does anything else than what it says on the label. If there is a bunch of redundant changes in the branch, it will make it hard to track those changes later on since it&#39;s hidden under another pull request. So most likely your pull request will be rejected if this is the case.</p>
 <p><strong> Keep the amount of commits to a minimum </strong><br>If you have a commit that fixes the issue, and then 5 commits to fix various mistakes / typos, you will be better off removing all the commits and then do a new commit, this will be much cleaner and easier to manage. You can look at the Troubleshooting section for how to remove a range of commits.</p>
 <p><strong> Write meaningful commit messages </strong><br>No one can figure out what &quot;newcommit&quot; changes, and no one can track the change if an issue arises with it. Take your time to write a short but complete commit description such as: </p>
 <blockquote>
@@ -414,7 +414,7 @@ git reset --soft HEAD~3    // Resets the branch to the 4th newest commit
 <pre><code>HEAD-&gt;HEAD~-&gt;HEAD~2-&gt;HEAD~3-&gt;...-&gt;HEAD~n</code></pre>
 <p>(if you have a branch merged with the branch you are working on it gets a little more complicated than that, but I will assume you wont have a branch merged with your working branch)</p>
 <h2 id="remove-a-range-of-commits">Remove a range of commits</h2>
-<p>If you want to remove the commits themselves and not just revert the repository to an earlier stage (e.g. to make a clean PullRequest with just 1 commit), then you will use <code>git rebase -i</code>.<br>E.g.</p>
+<p>If you want to remove the commits themselves and not just revert the repository to an earlier stage (e.g. to make a clean Pull Request with just 1 commit), then you will use <code>git rebase -i</code>.<br>E.g.</p>
 <pre><code>git rebase -i HEAD~2</code></pre>
 <p>This will open up a text editor with options for what to do with each commit, if there is some commits you want to merge together, use the <em>&quot;squash&quot;</em> option to merge them together.<br>E.g.</p>
 <blockquote>

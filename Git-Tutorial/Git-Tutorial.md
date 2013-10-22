@@ -60,7 +60,7 @@ The general "Contribution" workflow I use is whenever I there is something I wan
 4. Add the changes
 5. Commit the changes
 6. Push the changes to my own repo on GitHub
-7. PullRequest the changes to the official repo 
+7. Pull Request the changes to the official repo 
 
 So lets go through this procedure step-by-step.
 
@@ -129,13 +129,13 @@ It may ask you for a username and password, for this just use the same username 
 > git commit -m "Wow new feature that does this"
 > git push
 
-## Pullrequests ##
-Assuming you have successfully pushed the commit to the online repository, you should now be able to do a pullrequest. Pullrequests are done through the website, and are very simple to perform.
+## Pull requests ##
+Assuming you have successfully pushed the commit to the online repository, you should now be able to do a pull request. Pull requests are done through the website, and are very simple to perform.
 Go to your online repository and press the green `Compare and review` button.
 
-![Pullrequest](http://i.imgur.com/QPUFaqD.jpg)
+![Pull request](http://i.imgur.com/QPUFaqD.jpg)
 
-Now you come to the *compare page*, on this page you can compare your repository with the official one and create pullrequests from a branch in your repository to a branch in the official one.
+Now you come to the *compare page*, on this page you can compare your repository with the official one and create pull requests from a branch in your repository to a branch in the official one.
 
 You can edit what branches and repositories you want to compare by clicking the *"Edit"* button
 
@@ -145,20 +145,20 @@ And you can see what changes has been made below that bar:
 
 ![](http://i.imgur.com/u5ltS2Q.jpg)
 
-Now to actually make the PullRequest, click on the large button that says *"Click to create a pull request for this comparison"*
+Now to actually make the Pull Request, click on the large button that says *"Click to create a pull request for this comparison"*
 
 ![](http://i.imgur.com/0HvgsUr.jpg)
 
-The dialog that then pops up will feature a title and a description. Here you should describe all the commits that your pull request involves! (If you only have 1 commit, copy-pasting the information from that commit will be fine) along with a "how to use" (or "how to replicate the bug this PullRequest fixes"). Then you just press *"Send pull request"* and that's it! Now you just have to wait untill the PullRequest is accepted/rejected and act accordingly. Be sure to be ready to help out if there is some issues with the PullRequest. 
+The dialog that then pops up will feature a title and a description. Here you should describe all the commits that your pull request involves! (If you only have 1 commit, copy-pasting the information from that commit will be fine) along with a "how to use" (or "how to replicate the bug this Pull Request fixes"). Then you just press *"Send pull request"* and that's it! Now you just have to wait untill the Pull Request is accepted/rejected and act accordingly. Be sure to be ready to help out if there is some issues with the Pull Request. 
 **Make sure to checkout the guidelines below.**
 
 ## Important guidelines for contributing ##
 
-** Always pullrequest to the development branch **
-New changes should always go into the development branch before they go into the master branch, this is because they need to be QA'd before going into the Master branch. If you don't pullrequest to the development branch, your pullrequest will be rejected.
+** Always pull request to the development branch **
+New changes should always go into the development branch before they go into the master branch, this is because they need to be QA'd before going into the Master branch. If you don't pull request to the development branch, your pull request will be rejected.
 
 ** Avoid redundancy **
-If you have a branch this fixes feature "x" make sure that, that is all it does. Don't do a pullrequest that does anything else than what it says on the label. If there is a bunch of redundant changes in the branch, it will make it hard to track those changes later on since it's hidden under another pull request. So most likely your pullrequest will be rejected if this is the case.
+If you have a branch this fixes feature "x" make sure that, that is all it does. Don't do a pull request that does anything else than what it says on the label. If there is a bunch of redundant changes in the branch, it will make it hard to track those changes later on since it's hidden under another pull request. So most likely your pull request will be rejected if this is the case.
 
 ** Keep the amount of commits to a minimum **
 If you have a commit that fixes the issue, and then 5 commits to fix various mistakes / typos, you will be better off removing all the commits and then do a new commit, this will be much cleaner and easier to manage. You can look at the Troubleshooting section for how to remove a range of commits.
@@ -220,7 +220,7 @@ So basically it goes:
 (if you have a branch merged with the branch you are working on it gets a little more complicated than that, but I will assume you wont have a branch merged with your working branch)
 
 ## Remove a range of commits ##
-If you want to remove the commits themselves and not just revert the repository to an earlier stage (e.g. to make a clean PullRequest with just 1 commit), then you will use `git rebase -i`.
+If you want to remove the commits themselves and not just revert the repository to an earlier stage (e.g. to make a clean Pull Request with just 1 commit), then you will use `git rebase -i`.
 E.g.
 
     git rebase -i HEAD~2
