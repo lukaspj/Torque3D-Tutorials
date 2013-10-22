@@ -1,6 +1,6 @@
 # Introduction #
 This is a basic guide to using Git for T3D contribution and development.
-This guide assumes you already have installed git and it is integrated into your console. To test that this is the case, open up a command-line window (windows key + r -> type in "cmd" without the quotes -> press enter) and write
+This guide assumes you already have installed Git and it is integrated into your console. To test that this is the case, open up a command-line window (windows key + r -> type in "cmd" without the quotes -> press enter) and write
 
     git
 
@@ -149,7 +149,7 @@ Now to actually make the PullRequest, click on the large button that says *"Clic
 
 ![](http://i.imgur.com/0HvgsUr.jpg)
 
-The dialog that then pops up will feature a title and a description. Here you should describe all the commits that your pull request involves! (If you only have 1 commit, copy-pasting the information from that commit will be fine) along with a "how to use" (or "how to replicate the bug this PullRequest fixes"). Then you just press *"Send pull request"* and thats it! Now you just have to wait untill the PullRequest is accepted/rejected and act accordingly. Be sure to be ready to help out if there is some issues with the PullRequest. 
+The dialog that then pops up will feature a title and a description. Here you should describe all the commits that your pull request involves! (If you only have 1 commit, copy-pasting the information from that commit will be fine) along with a "how to use" (or "how to replicate the bug this PullRequest fixes"). Then you just press *"Send pull request"* and that's it! Now you just have to wait untill the PullRequest is accepted/rejected and act accordingly. Be sure to be ready to help out if there is some issues with the PullRequest. 
 **Make sure to checkout the guidelines below.**
 
 ## Important guidelines for contributing ##

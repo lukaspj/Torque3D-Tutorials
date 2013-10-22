@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Tutorial</title>
+<title>Git-Tutorial</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
@@ -292,7 +292,7 @@ img {
 </head>
 <body>
 <h1 id="introduction">Introduction</h1>
-<p>This is a basic guide to using Git for T3D contribution and development.<br>This guide assumes you already have installed git and it is integrated into your console. To test that this is the case, open up a command-line window (windows key + r -&gt; type in &quot;cmd&quot; without the quotes -&gt; press enter) and write</p>
+<p>This is a basic guide to using Git for T3D contribution and development.<br>This guide assumes you already have installed Git and it is integrated into your console. To test that this is the case, open up a command-line window (windows key + r -&gt; type in &quot;cmd&quot; without the quotes -&gt; press enter) and write</p>
 <pre><code>git</code></pre>
 <p>And then press enter, if it says the command was not recognized, then you probably haven&#39;t set Git up properly.</p>
 <p><strong>Platform</strong><br>This tutorial is aimed towards Windows developers, but I don&#39;t see why it wouldn&#39;t work for Linux or Mac as well, aside from minor differences in terminology.</p>
@@ -368,7 +368,7 @@ git add foo.txt // Adds foo.txt</code></pre>
 <p><img src="http://i.imgur.com/u5ltS2Q.jpg" alt=""></p>
 <p>Now to actually make the PullRequest, click on the large button that says <em>&quot;Click to create a pull request for this comparison&quot;</em></p>
 <p><img src="http://i.imgur.com/0HvgsUr.jpg" alt=""></p>
-<p>The dialog that then pops up will feature a title and a description. Here you should describe all the commits that your pull request involves! (If you only have 1 commit, copy-pasting the information from that commit will be fine) along with a &quot;how to use&quot; (or &quot;how to replicate the bug this PullRequest fixes&quot;). Then you just press <em>&quot;Send pull request&quot;</em> and thats it! Now you just have to wait untill the PullRequest is accepted/rejected and act accordingly. Be sure to be ready to help out if there is some issues with the PullRequest.<br><strong>Make sure to checkout the guidelines below.</strong></p>
+<p>The dialog that then pops up will feature a title and a description. Here you should describe all the commits that your pull request involves! (If you only have 1 commit, copy-pasting the information from that commit will be fine) along with a &quot;how to use&quot; (or &quot;how to replicate the bug this PullRequest fixes&quot;). Then you just press <em>&quot;Send pull request&quot;</em> and that&#39;s it! Now you just have to wait untill the PullRequest is accepted/rejected and act accordingly. Be sure to be ready to help out if there is some issues with the PullRequest.<br><strong>Make sure to checkout the guidelines below.</strong></p>
 <h2 id="important-guidelines-for-contributing">Important guidelines for contributing</h2>
 <p><strong> Always pullrequest to the development branch </strong><br>New changes should always go into the development branch before they go into the master branch, this is because they need to be QA&#39;d before going into the Master branch. If you don&#39;t pullrequest to the development branch, your pullrequest will be rejected.</p>
 <p><strong> Avoid redundancy </strong><br>If you have a branch this fixes feature &quot;x&quot; make sure that, that is all it does. Don&#39;t do a pullrequest that does anything else than what it says on the label. If there is a bunch of redundant changes in the branch, it will make it hard to track those changes later on since it&#39;s hidden under another pull request. So most likely your pullrequest will be rejected if this is the case.</p>
